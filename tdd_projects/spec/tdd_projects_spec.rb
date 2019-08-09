@@ -42,4 +42,19 @@ describe "Array" do
         end
     end
 
+    describe "stock_picker" do
+        let(:prices) { [5, 20, 12, 24, 7, 3] }
+        let(:pair) {prices.stock_picker}
+
+        it "should return greatest profit pairs" do
+            expect(prices.stock_picker).to eql([0,3])
+        end
+
+        it "should always sell after buying" do
+            expect(pair[0]).to be < pair[1]
+        end
+    end
+
+
 end
+

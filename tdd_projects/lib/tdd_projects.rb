@@ -21,7 +21,35 @@ class Array
     end
 
     def my_transpose
-       self.transpose
+        transposed = []
+        idx = 0
+        while idx < self.length
+            new_row = []
+            self.each do |row|
+                new_row << row[idx]
+            end
+            idx += 1
+            transposed << new_row
+        end
+        transposed
     end
+
+    def stock_picker
+        pair = []
+        profit = self[1]-self[0]
+
+        (0...self.length-1).each do |day|
+            (1...self.length).each do |day2|
+                if self[day2]-self[day] > profit
+                    pair = [day,day2]
+                    profit = self[day2]-self[day]
+                end
+            end
+        end
+
+        return pair
+
+    end
+
 
 end
